@@ -1,43 +1,34 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
+import ReactDOM from "react-dom";
 import App from "./components/App";
+import "./components/contact"
+import contacts from "./components/contact";
 
-function Card(props) {
-  return (
-    <div>
-      <h2>{props.name}</h2>
-      <img src={props.src} style={props.style} />
-      <p>{props.email}</p>
-    </div>
-  );
-}
-
-let customstyle = {
-  height : "300px",
-  width: "240px"
-}
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
+ReactDOM.render(
   <div>
-    <Card
-      name="Beyonce"
-      src="https://www.shutterstock.com/image-photo/los-angeles-feb-10-beyonce-260nw-1129097897.jpg"
-      email="beyonce@mail.com"
-    ></Card>
-    <br></br>
-    <Card
-      name="Justin Bieber"
-      src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRSqoSEuV0lmNrEVLwJ6q75DaOWQjorN0b2G_BLJr4OScCX0YSZ"
-      email="justin@mail.com"
-    ></Card>
-    <br></br>
-    <Card
-      name="Eminem"
-      src="http://t2.gstatic.com/licensed-image?q=tbn:ANd9GcQjVCJMbseIAEjcb1XuiGMc87zPg0WFJTeJ7frMFIGTBM5ul7VRr8CAiCZHvyxif6IJKs0dzuCPYGZjXZE"
-      email="eminem@mail.com"
-      style={customstyle}
-     
-    ></Card>
-  </div>
+      <h1 className="heading">My Contacts</h1>
+
+    <App name={contacts[0].name}
+      imgURL={contacts[0].imgURL}
+      phone={contacts[0].phone}
+      email={contacts[0].email} />
+      <App name={contacts[1].name}
+      imgURL={contacts[1].imgURL}
+      phone={contacts[1].phone}
+      email={contacts[1].email} />
+      <App name={contacts[2].name}
+      imgURL={contacts[2].imgURL}
+      phone={contacts[2].phone}
+      email={contacts[2].email} />
+
+  </div>,
+  document.getElementById("root")
 );
+
+//1. Apply CSS styles to App.jsx component
+//to match the appearance on the completed app:
+//https://c6fkx.csb.app/
+//2. Extract the contact card as a reusable Card component.
+//3. Use props to render the default Beyonce contact card
+//so the Card component can be reused for other contacts.
+//4. Import the contacts.js file to create card components.
