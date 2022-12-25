@@ -1,23 +1,30 @@
-/* eslint-disable */
 import React from "react";
+import Card from "./Card";
+import contacts from "../contact";
 
-function App(props) {
+function App() {
   return (
     <div>
-      <div className="card">
-        <div className="top">
-          <h2 className="name">{props.name}</h2>
-          <img
-            src={props.imgURL}
-            alt="avatar_img"
-            className="circle-img"
-          />
-        </div>
-        <div className="bottom">
-          <p className="info">{props.phone}</p>
-          <p className="info">{props.email}</p>
-        </div>
-      </div>
+      <h1 className="heading">My Contacts</h1>
+
+      <Card
+        name={contacts[0].name}
+        img={contacts[0].imgURL}
+        tel={contacts[0].phone}
+        email={contacts[0].email}
+      />
+      <Card
+        name={contacts[1].name}
+        img={contacts[1].imgURL}
+        tel={contacts[1].phone}
+        email={contacts[1].email}
+      />
+      <Card
+        name={contacts[2].name}
+        img={contacts[2].imgURL}
+        tel={contacts[2].phone}
+        email={contacts[2].email}
+      />
     </div>
   );
 }
