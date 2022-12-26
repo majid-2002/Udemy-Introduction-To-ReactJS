@@ -1,22 +1,15 @@
 /* eslint-disable */
-import { render } from "@testing-library/react";
 import React from "react";
-import Login from "./Login";
+import Form from "./Form";
 
-var isLoggedIn = false;
-
-// function renderConditionally() {
-//   if (isLoggedIn) {
-//     return <h1>Hello</h1>;
-//   } else {
-//     return <Login></Login>;
-//   }
-// }
+var userIsRegistered = true;
 
 function App() {
-  return <div className="container">{
-    isLoggedIn ? <h1>Hellow</h1> : <Login />
-  }</div>;
+  return (
+    <div className="container">
+      <Form isregistered={userIsRegistered} />
+    </div>
+  );
 }
 
 export default App;
