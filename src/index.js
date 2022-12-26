@@ -1,5 +1,11 @@
+ /* eslint-disable */ 
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./components/App";
+import emojipedia from "./emojipedia";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+
+let newString = emojipedia.map(function (x) {
+    return x.meaning.substring(0, 50);
+  }); 
+
+console.log(newString);
