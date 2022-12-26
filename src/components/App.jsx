@@ -1,29 +1,30 @@
 import React from "react";
-import Card from "./Card";
-import contacts from "../contact";
+import Entry from "./Entry" 
+import emojipedia from "../emojipedia";
 
 
-function createCard(contact){
+
+function createEntry(card){
   return (
-    <Card
-      key={contact.id}
-      name={contact.name}
-      img={contact.imgURL}
-      tel={contact.phone}
-      email={contact.email}
-      id={contact.id}
+    <Entry 
+        key={card.id}
+        emoji={card.emoji}
+        name={card.name}
+        meaning={card.meaning}
     />
   )
 }
 
 
-
 function App() {
   return (
     <div>
-      <h1 className="heading">My Contacts</h1>
-      {/* map or loop the contacts with create card function*/}
-      {contacts.map(createCard)} 
+      <h1>
+        <span>emojipedia</span>
+      </h1>
+      <dl className="dictionary">
+        {emojipedia.map(createEntry)}
+      </dl>
     </div>
   );
 }
