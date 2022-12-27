@@ -1,37 +1,22 @@
 /* eslint-disable */
-import React from "react";
+import React, {useState} from "react";
 
 function App() {
-  const [count, setcount] = React.useState(0);
 
-  // function increase(){
-  //   setcount(count+1);
-  // }
-  // function decrease(){
-  //   setcount(count-1);
-  // }
+  setInterval(updateTime,1000)
+  const now = new Date().toLocaleTimeString().substring(0, 8);
+  
+  const [time, timeset] = useState(now);
 
-//** const [red , green, blue] = [250 , 60 , 7 ]  ----- this is destructuring in react , where we can acces the array element by a name */
- 
-
+  function updateTime(time){
+    const newtime = new Date().toLocaleTimeString().substring(0, 8);
+    timeset(newtime);
+  }
 
   return (
     <div className="container">
-
-      <h1>{count}</h1>
-
-      <button
-        onClick={() => {
-          setcount(count + 1);
-        }}
-      >+</button>
-
-      <button
-        onClick={() => {
-          setcount(count - 1);
-        }}
-      >-</button>
-
+      <h1>{time}</h1>
+      <button onClick={updateTime}>Get Time</button>
     </div>
   );
 }
