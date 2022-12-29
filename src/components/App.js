@@ -1,33 +1,28 @@
 import React, { useState } from "react";
 
 function App() {
-  const [headingtext, setHeading] = useState("Hello");
-  const [isMouseOn, setMouseOver] = useState(false);
+  const [inputValue, setInputValue] = useState("")
+  const [h1value , setH1value] = useState("")
 
-  function handleMouseon() {
-    setMouseOver(true);
+
+  function handlInput(event){
+    setInputValue(event.target.value)
+  }
+  
+  function handleSubmit(event){
+    setH1value(inputValue)
+    event.preventDefault(); //* to prevent default behavior when submit button is clicked
   }
 
-  function handleMouseout() {
-    setMouseOver(false);
-  }
-
-  return (
+  return(
     <div className="container">
-      <h1>{headingtext}</h1>
-      <input type="text" placeholder="What's is your name?"></input>
-      <button
-        onClick={() => {
-          setHeading("submittted");
-        }}
-        onMouseOver={handleMouseon}
-        onMouseOut={handleMouseout}
-        style={{ backgroundColor: isMouseOn ? "black" : "white" }}
-      >
-        Submit
-      </button>
+    <form onSubmit={handleSubmit}>
+      <h1>Hello {h1value}</h1>
+      <input placeholder="what is your name?" value={inputValue} onChange={handlInput}></input>
+      <button type="submit">Submit</button>
+    </form>
     </div>
-  );
+  )
 }
 
 export default App;

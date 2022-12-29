@@ -25,10 +25,6 @@
     font-weight: 200;
   }
   
-  form {
-    padding: 20px 0;
-    position: relative;
-  }
   input {
     border: 1px solid rgba(252, 252, 252, 0.4);
     background-color: rgba(252, 252, 252, 0.2);
@@ -44,7 +40,7 @@
     font-weight: 300;
   }
   
-  button {
+   button {
     appearance: none;
     outline: 0;
     background-color: white;
