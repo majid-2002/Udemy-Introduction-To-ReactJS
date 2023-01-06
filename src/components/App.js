@@ -1,44 +1,59 @@
+/* eslint-disable */
+import { getDefaultNormalizer } from "@testing-library/react";
 import React, { useState } from "react";
 
 function App() {
-  const [fullName, setFullName] = useState({
+
+  const [contact, setContact] = useState({
     fName: "",
-    lName : ""
-  })
+    lName: "",
+    email: ""
+  });
 
-  
-  function handleChange(event){ //* event is the event performed onChange of input element
 
-    console.log(event.target) //* target is the input element of the event
+  function handleChange(event){
 
-    const {value , name } = event.target; //* destructuring objects from event.target "value" and "name"
+    const {name, value} = event.target;
 
-    setFullName((prevValue) =>{
+
+    setContact(function (prevValue) { 
       if(name === "fName"){
         return{
           fName : value,
-          lName : prevValue.lName
-        };
+          lName : prevValue.lName,
+          email : prevValue.email
+        }
       }else if(name === "lName"){
         return{
           fName : prevValue.fName,
-          lName : value
-        };
+          lName : value,
+          email : prevValue.email
+        }
+      }else if(name === "email"){
+        return{
+          fName : prevValue.fName,
+          email : value,
+          lName : prevValue.lName
+        }
       }
-    })
+      event.preventDefault();
+     })
   }
-  
 
-  return(
+  return (
     <div className="container">
-    <form >
-      <h1>Hello, {fullName.fName + " " + fullName.lName}</h1> 
-      <input name="fName" placeholder="firstName" value={fullName.fName} onChange={handleChange}></input>
-      <input name="lName" placeholder="lastName" value={fullName.lName} onChange={handleChange}></input>
-      <button type="submit">Submit</button>
-    </form>
+      <h1>
+        Hello {contact.fName} {contact.lName}
+      </h1>
+      <p>{contact.email}</p>
+      <form>
+        <input name="fName" placeholder="First Name" onChange={handleChange} value={contact.fName}/>
+        <input name="lName" placeholder="Last Name" onChange={handleChange} value={contact.lName}/>
+        <input name="email" placeholder="Email" onChange={handleChange} value={contact.email}/>
+        <button type="submit">Submit</button>
+      </form>
     </div>
-  )
+  );
 }
 
 export default App;
