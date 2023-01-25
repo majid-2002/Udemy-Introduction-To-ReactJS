@@ -1,10 +1,10 @@
 /* eslint-disable */
-import { getDefaultNormalizer } from "@testing-library/react";
 import React, { useState } from "react";
 
 function App() {
 
   const [contact, setContact] = useState({
+    //* initial values
     fName: "",
     lName: "",
     email: ""
@@ -13,30 +13,14 @@ function App() {
 
   function handleChange(event){
 
-    const {name, value} = event.target;
+    const {name, value} = event.target; //* get the event source (button) name and value 
 
 
-    setContact(function (prevValue) { 
-      if(name === "fName"){
-        return{
-          fName : value,
-          lName : prevValue.lName,
-          email : prevValue.email
-        }
-      }else if(name === "lName"){
-        return{
-          fName : prevValue.fName,
-          lName : value,
-          email : prevValue.email
-        }
-      }else if(name === "email"){
-        return{
-          fName : prevValue.fName,
-          email : value,
-          lName : prevValue.lName
-        }
+    setContact(function (prevValue) {  //* call the set contact method of useState
+      return{
+        ...prevValue, //* spread operator in javascript to access all the values inside a object
+        [name]: value
       }
-      event.preventDefault();
      })
   }
 
