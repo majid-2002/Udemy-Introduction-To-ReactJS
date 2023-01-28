@@ -18,6 +18,14 @@ function App() {
     setInput("");
   }
 
+  function deleteItem(passedindex){
+    setItem((prevValue) => {
+      return prevValue.filter((val, index) => { //* filter the array elements where index != the passed index
+        return index != passedindex;
+      })
+    })
+  }
+
   return (
     <div className="container">
       <div className="heading">
@@ -31,9 +39,8 @@ function App() {
       </div>
       <div>
         <ul>
-          <li>A Item</li>
-          {items.map(item => 
-          <Todoitem listitem={item} />
+          {items.map((item, index) => 
+          <Todoitem key={index} id={index} listitem={item} checkedItem={deleteItem}/> //* pass a function called deleteItem as prompt to checkeditem
           )
           } 
         </ul>
