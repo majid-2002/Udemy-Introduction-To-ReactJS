@@ -1,5 +1,6 @@
 /* eslint-disable */
 import React, { useState } from "react";
+import Todoitem from "./todoitem";
 
 
 function App() {
@@ -31,7 +32,10 @@ function App() {
       <div>
         <ul>
           <li>A Item</li>
-          {items.map(item => <li>{item}</li>)} 
+          {items.map(item => 
+          <Todoitem listitem={item} />
+          )
+          } 
         </ul>
       </div>
     </div>
