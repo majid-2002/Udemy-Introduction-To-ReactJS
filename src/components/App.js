@@ -1,41 +1,39 @@
 /* eslint-disable */
 import React, { useState } from "react";
 
+
 function App() {
 
-  const [contact, setContact] = useState({
-    //* initial values
-    fName: "",
-    lName: "",
-    email: ""
-  });
+  const [items, setItem] = useState([]);
+  const [input, setInput] = useState("");
 
 
   function handleChange(event){
+    setInput(event.target.value);
+  }
 
-    const {name, value} = event.target; //* get the event source (button) name and value 
-
-
-    setContact(function (prevValue) {  //* call the set contact method of useState
-      return{
-        ...prevValue, //* spread operator in javascript to access all the values inside a object
-        [name]: value
-      }
-     })
+  function handleClick(){
+    setItem([...items, input]);
+    setInput("");
   }
 
   return (
     <div className="container">
-      <h1>
-        Hello {contact.fName} {contact.lName}
-      </h1>
-      <p>{contact.email}</p>
-      <form>
-        <input name="fName" placeholder="First Name" onChange={handleChange} value={contact.fName}/>
-        <input name="lName" placeholder="Last Name" onChange={handleChange} value={contact.lName}/>
-        <input name="email" placeholder="Email" onChange={handleChange} value={contact.email}/>
-        <button type="submit">Submit</button>
-      </form>
+      <div className="heading">
+        <h1>To-Do List</h1>
+      </div>
+      <div className="form">
+        <input type="text" onChange={handleChange} value={input}/>
+        <button onClick={handleClick}>
+          <span>Add</span>
+        </button>
+      </div>
+      <div>
+        <ul>
+          <li>A Item</li>
+          {items.map(item => <li>{item}</li>)} 
+        </ul>
+      </div>
     </div>
   );
 }
