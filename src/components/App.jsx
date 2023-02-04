@@ -1,20 +1,34 @@
-/* eslint-disable */
-import React from "react";
+import React, { useState } from "react";
 import Header from "./Header";
-import Note from "./Note";
 import Footer from "./Footer";
-import notes from "../notes.js";
+import Note from "./Note";
+import CreateArea from "./CreateArea";
 
 function App() {
+  const [notes, setNotes] = useState([]);
+
+  function addNote(newNote) {
+    setNotes((prev) => {
+      return [...prev, newNote];
+    });
+  }
+
+
   return (
     <div>
-      <Header></Header> 
-      {notes.map((note) => {
+      <Header />
+      <CreateArea onAdd={addNote} />
+      {notes.map((noteItem, index) => {
         return (
-          <Note key={note.key} title={note.title} content={note.content} />
+          <Note
+            key={index}
+            id={index}
+            title={noteItem.title}
+            content={noteItem.content}
+          />
         );
       })}
-      <Footer></Footer>
+      <Footer />
     </div>
   );
 }
